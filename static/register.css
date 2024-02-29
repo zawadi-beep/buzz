@@ -6,7 +6,7 @@
 .register-photo .image-holder {
   display:table-cell;
   width:auto;
-  background:url("../static/assets/img/portfolio/portfolio-5.jpg ");
+  background:url("../static/assets/img/portfolio/portfolio-1.jpg ");
   background-size:cover;
 }
 

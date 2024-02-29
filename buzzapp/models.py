@@ -20,3 +20,21 @@ class products(models.Model):
 
     def __str__(self):
         return self.product
+
+class Member(models.Model):
+    username = models.CharField(max_length=200)
+    email = models.EmailField()
+    password = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.username
+
+class Contact(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    subject = models.CharField(max_length=100)
+    message = models.TextField()
+
+    def __str__(self):
+        return self.name
+
