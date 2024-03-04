@@ -3,7 +3,9 @@ from typing import Tuple
 from django.shortcuts import render, redirect
 from buzzapp.models import Member
 from buzzapp.models import Contact
-from buzzapp.models import Users
+from buzzapp.models import Users,ImageModel
+from buzzapp.forms import ImageUploadForm
+
 
 
 # Create your views here.
@@ -47,8 +49,7 @@ def Portfolio(request):
     return render(request, 'portfolio-details.html')
 
 
-def upload(request):
-    return render(request, 'upload.html')
+
 def detail(request):
     details = Contact.objects.all()
     return render(request,'details.html',{'details':details})
@@ -72,4 +73,26 @@ def adminhome(request):
 
    else:
        return render(request,'login.html')
+
+
+def upload_image(request):
+    if request.method == 'POST':
+        form = ImageUploadForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('/showimage')
+    else:
+        form = ImageUploadForm()
+    return render(request, 'upload.html', {'form': form})
+
+
+def show_image(request):
+    images = ImageModel.objects.all()
+    return render(request, 'showimages.html', {'images': images})
+
+
+def imagedelete(request, id):
+    image = ImageModel.objects.get(id=id)
+    image.delete()
+    return redirect('/showimage')
 

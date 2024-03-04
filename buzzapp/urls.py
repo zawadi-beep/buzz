@@ -25,8 +25,10 @@ urlpatterns = [
     path('portfolio/', views.Portfolio, name = 'portfolio'),
     path('register/', views.register, name = 'register'),
     path('login/', views.login, name = 'login'),
-    path('upload/', views.upload, name = 'upload'),
     path('details/', views.detail, name = 'detail'),
     path('user-details/', views.user, name = 'user'),
     path('adminhome/', views.adminhome, name = 'adminhome'),
+    path('uploadimage/', views.upload_image, name='upload'),
+    path('showimage/', views.show_image, name='image'),
+    path('imagedelete/<int:id>', views.imagedelete),
 ]
